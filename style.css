@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
+}
+.widget_container {
+  /*   border: 1px solid red; */
+  z-index: 0;
+  width: 45px;
+  height: 45px;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transition: 0.2s ease-in-out;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.widget__open {
+  height: 180px;
+  border-radius: 0;
+}
+
+#telephone {
+  background-image: url(https://livechat.chat2desk.com/images/widget/call.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.telephone {
+  width: 45px;
+  height: 45px;
+}
+
+.btn_messenger {
+  background-color: transparent;
+  border: 1px solid red;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 45px; */
+  padding: 5px;
+  cursor: pointer;
+}
+
+.btn_messenger:hover {
+  background-color: rgba(71, 47, 145, 0.05);
+  border-radius: 6px;
+}
+
+.input-focus-name {
+  outline: 2px solid #17a2b8;
+}
+.input-focus-tel {
+  outline: 2px solid #17a2b8;
+}
+.input-focus-email {
+  outline: 2px solid #17a2b8;
+}
+
+.name-label {
+  color: gray;
+  font-family: Lato, sans-serif;
+  margin: 20px 0 0 15px;
+}
+.tel-label {
+  color: gray;
+  font-family: Lato, sans-serif;
+  margin: 0 15px;
+}
+.email-label {
+  color: gray;
+  font-family: Lato, sans-serif;
+  margin: 0 15px;
+}
+.top-div {
+  background: #17a2b8;
+  width: 100%;
+  height: 50px;
+}
+.bottom-div {
+  display: flex;
+  flex-direction: column;
+  height: 375px;
+}
+.title {
+  color: rgb(255, 255, 255);
+  padding: 10px 0 0 10px;
+  font-family: Lato, sans-serif;
+}
+.name-input {
+  margin: 5px 0 40px 0;
+  border: 1px solid rgb(209, 209, 209) !important;
+  width: 90%;
+  padding: 10px 0 10px 5px;
+  border-radius: 3px;
+  margin: 5px auto 15px auto;
+}
+
+.tel-input {
+  margin: 5px 0 40px 0;
+  border: 1px solid rgb(209, 209, 209) !important;
+  width: 90%;
+  padding: 10px 0 10px 5px;
+  border-radius: 3px;
+  margin: 5px auto 15px auto;
+}
+.email-input {
+  margin: 5px 0 40px 0;
+  border: 1px solid rgb(209, 209, 209) !important;
+  width: 90%;
+  padding: 10px 0 10px 5px;
+  margin: 5px auto 15px auto;
+  border-radius: 3px;
+}
+.chat-form {
+  width: 350px;
+  background: #fff;
+  /* box-shadow: 0px 0px 100px 5px #e1e1e1; */
+  border: 1px solid rgb(227, 227, 227);
+  @media (max-width: 500px)   {
+    width: 90%;
+    margin: 0 auto;
+    left: 5%;
+    right: 5%;
+  }
+}
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  width: 90%;
+  margin: 15px auto;
+  padding: 10px 0;
+  border-radius: 6px;
+  border: #007bff;
+  cursor: pointer;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+}
+.wrapSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 375px;
+}
+
+.continueDiv {
+  height: 375px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.continueDiv > a {
+  background: #17a2b8;
+  color: #fff;
+  padding: 10px 45px;
+  border-radius: 4px;
+  font-family: Lato, sans-serif;
+  text-decoration: none;
+  /* height: 375px; */
+}
+.error {
+  border: 1px solid red !important;
+}
+
+.error-div {
+ position: absolute;
+ bottom: 70px;
+ left: 18px;
+  
+}
+
+.error-text {
+  color: red;
+}
