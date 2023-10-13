@@ -37,8 +37,15 @@ h3.className = "title"
 // h3.style.color = "#fff"
 // h3.style.fontFamily = "Lato, sans-serif";
 
+const requiretel = document.createElement("span")
+const requiredname = document.createElement("span")
+requiretel.innerHTML = "*"
+requiredname.innerHTML = "*"
+requiretel.style.color = "red"
+requiredname.style.color = "red"
+
 const nameLabel = document.createElement("label")
-nameLabel.innerHTML = 'Имя'
+nameLabel.innerHTML = `Имя`
 nameLabel.className = "name-label"
 
 const nameInput = document.createElement("input");
@@ -48,18 +55,34 @@ nameInput.required = true;
 nameInput.className = "name-input";
 
 const telLabel = document.createElement("label")
-telLabel.innerHTML = 'Телефон номер'
+telLabel.innerHTML = `Телефон номер`
 telLabel.className = "tel-label"
-// telLabel.style.fontFamily = "Lato, sans-serif"
-// telLabel.style.color = "#fff"
+
+telLabel.appendChild(requiredname)
+nameLabel.appendChild(requiretel)
+
 
 const telInput = document.createElement("input");
 telInput.type = "tel";
 telInput.name = "tel";
-// telInput.placeholder = "Телефон номер";
+telInput.placeholder = "+(996) 700 000 000";
 telInput.required = true;
 telInput.className = "tel-input";
 
+telInput.addEventListener("input", (e) => {
+    const input = e.target.value.replace(/\D/g, ""); // Remove non-digits
+
+    let formatted = "+(996)";
+
+    for (let i = 3; i < input.length && i < 12; i++) {
+        if (i === 3 || i === 6 || i === 8 || i === 10) {
+            formatted += " ";
+        }
+        formatted += input[i];
+    }
+
+    e.target.value = formatted;
+});
 const emailLabel = document.createElement("label")
 emailLabel.innerHTML = 'Почта'
 emailLabel.className = "email-label"
@@ -111,16 +134,11 @@ function getLink(link) {
 
 
 export function toggleSpinnerVisibility() {
-    console.log(isLoading);
     if (isLoading === "pending") {
         form.appendChild(wrapSpinner)
         if (bottomDiv) {
             form.removeChild(bottomDiv)
         }
-        // if (errorDiv) {
-        //     form.removeChild(errorDiv)
-        // }
-
     }
     else if (isLoading === "continue") {
         form.appendChild(continueDiv)
@@ -161,7 +179,7 @@ submitButton.addEventListener("click", async function (event) {
     event.preventDefault();
 
     const name = nameInput.value;
-    const tel = telInput.value;
+    const tel = telInput.value.replace(/[\s+()]/g, "");
     const email = emailInput.value;
 
     // You can add your validation logic here
@@ -175,15 +193,9 @@ submitButton.addEventListener("click", async function (event) {
     } else {
         telInput.classList.remove("error")
     }
-    if (!email) {
-        emailInput.classList.add("error")
-    } else {
-        emailInput.classList.remove("error")
-    }
 
     try {
-        if (name && tel && email) {
-            console.log("pen");
+        if (name && tel) {
             isLoading = "pending"
             toggleSpinnerVisibility()
             const response = await fetch("https://wary-gossamer-ink.glitch.me/webhook/onlineChat", {
@@ -194,7 +206,7 @@ submitButton.addEventListener("click", async function (event) {
                 body: JSON.stringify({ name: name, number: tel, email })
             })
 
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error("Произошла ошибка с сетью! Повторите попытку позже!");
             }
 

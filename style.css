@@ -187,3 +187,6 @@
 .error-text {
   color: red;
 }
+.required {
+  color: red;
+}
